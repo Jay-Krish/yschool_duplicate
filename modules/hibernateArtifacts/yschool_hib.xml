@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<appconfig>
+	<dbType>MYSQL</dbType>
+	<driver>com.mysql.jdbc.Driver</driver>
+      	<jdbcConnectionString>jdbc:mysql://127.0.0.1/yschool_lite</jdbcConnectionString>
+	<databaseIP>localhost</databaseIP>
+	<databaseCatalog>yschool_lite</databaseCatalog>
+	<databaseUsername>root</databaseUsername>
+	<databasePassword></databasePassword>
+	<sourceTarget>F:\PROJECTS\ySchool\modules\repository_lite</sourceTarget>
+	<projectName>yschool</projectName>
+	<topLevel>org.yarlithub</topLevel>
+	<libPath>libs</libPath>
+	<schemaStrategy>PARTIAL</schemaStrategy>
+
+
+<maven enabled="true" artifactId="yschool" groupId="org.yarlithub.yschool" version="1.0-SNAPSHOT" name="repository_lite" packaging="jar">
+	
+    <![CDATA[
+	<parent>
+        <groupId>org.yarlithub.yschool</groupId>
+        <artifactId>yschool</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+	</parent>]]>
+    
+
+<dependencies><![CDATA[
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate</artifactId>
+		<version>3.2.6</version>
+	</dependency>]]>
+	</dependencies>
+
+		
+</maven>
+</appconfig>
