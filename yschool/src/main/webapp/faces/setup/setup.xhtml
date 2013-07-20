@@ -36,35 +36,35 @@
                                     <legend>Create a ySchool user...</legend>
 
                                     <label>Username</label>
-                                    <h:inputText id="add-name" value="#{setupBean.teststr}" required="false"
+                                    <h:inputText id="add-name" value="#{setupBean.userName}" required="false"
                                                  requiredMessage=" Name is required">
                                         <f:validateRequired/>
                                         <f:validateLength maximum="50"/>
                                     </h:inputText>
                                     <h:message for="add-name" errorStyle="color : red"/>
                                     <label>Role</label>
-                                    <h:inputText id="add-role" value="#{setupBean.teststr}" required="false"
+                                    <h:inputText id="add-role" value="#{setupBean.userRole}" required="false"
                                                  requiredMessage=" Name is required">
                                         <f:validateRequired/>
                                         <f:validateLength maximum="50"/>
                                     </h:inputText>
                                     <h:message for="add-role" errorStyle="color : red"/>
                                     <label>Password</label>
-                                    <h:inputText id="add-pwd" value="#{setupBean.teststr}" required="false"
+                                    <h:inputText id="add-pwd" value="#{setupBean.userPass1}" required="false"
                                                  requiredMessage=" Name is required">
                                         <f:validateRequired/>
                                         <f:validateLength maximum="50"/>
                                     </h:inputText>
                                     <h:message for="add-pwd" errorStyle="color : red"/>
                                     <label>Confirm Password</label>
-                                    <h:inputText id="confirm-pwd" value="#{setupBean.teststr}" required="false"
+                                    <h:inputText id="confirm-pwd" value="#{setupBean.userPass2}" required="false"
                                                  requiredMessage=" Name is required">
                                         <f:validateRequired/>
                                         <f:validateLength maximum="50"/>
                                     </h:inputText>
                                     <h:message for="confirm-pwd" errorStyle="color : red"/>
                                 </fieldset>
-                                <h:commandButton id = "next1" type="submit"  value="Next"
+                                <h:commandButton id = "next1" action = "#{setupBean.enterSetup}" type="submit"  value="Next"
                                                  class="btn btn-primary"/>
                             </h:form>
                         </div>
