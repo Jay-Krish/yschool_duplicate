@@ -32,13 +32,6 @@
 
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.3.0.Final</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>3.6.3.Final</version>
         </dependency>
@@ -48,7 +41,6 @@
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <version>1.0.0.Final</version>
         </dependency>
-
 
         <dependency>
             <groupId>commons-collections</groupId>
@@ -68,25 +60,16 @@
             <version>1.6.1</version>
         </dependency>
 
-
         <dependency>
             <groupId>antlr</groupId>
             <artifactId>antlr</artifactId>
             <version>2.7.6</version>
         </dependency>
 
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>13.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-            <version>2.6.6</version>
-            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -102,12 +85,10 @@
             <scope>test</scope>
         </dependency>
 
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
-            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -150,25 +131,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring</artifactId>
             <version>${springVersion}</version>
-
         </dependency>
-
-
-        <!-- <dependency>
-            <groupId>com.felees</groupId>
-            <artifactId>hbnpojogen-persistence</artifactId>
-             <version>1.4.32</version>  <version>1.4.4</version>
-        </dependency> -->
-
 
         <dependency>
             <groupId>com.felees</groupId>
-            <artifactId>hbnpojogen-persistence</artifactId>
+            <artifactId>hbnpojogen</artifactId>
             <version>1.4.4</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/hbnPojoGenResource/hbnpojogen-persistence-1.4.4.jar</systemPath>
         </dependency>
-
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -189,9 +158,6 @@
             <version>1.2.16</version>
             <scope>test</scope>
         </dependency>
-
-
-        <!-- -->
 
     </dependencies>
 

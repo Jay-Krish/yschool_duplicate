@@ -1,10 +1,9 @@
-package org.yarlithub;
+package org.yarlithub.yschool.service;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.yarlithub.yschool.factories.yschoolLite.HibernateYschoolLiteDaoFactory;
 import org.yarlithub.yschool.factories.yschoolLite.YschoolLiteDataPoolFactory;
@@ -13,25 +12,26 @@ import org.yarlithub.yschool.model.obj.yschoolLite.User;
 import org.yarlithub.yschool.services.data.DataLayerYschoolLite;
 import org.yarlithub.yschool.services.data.DataLayerYschoolLiteImpl;
 
-@ContextConfiguration(locations = { "/applicationContext.xml" } )
-@RunWith(SpringJUnit4ClassRunner.class)
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
-public class UserDaoTest {
+@Service(value = "setupService")
+public class SetupService {
+    private static final Logger logger = LoggerFactory.getLogger(SetupService.class);
 
-    @Test
     @Transactional
-    public void testUserDao() {
+    public void createSetup(String username, String password, String role)  {
+        logger.debug("Starting to create a setup {}, {}", username, password);
+
         DataLayerYschoolLite dataLayerYschoolLite = DataLayerYschoolLiteImpl.getInstance();
         UserDao userDao = HibernateYschoolLiteDaoFactory.getUserDao();
 
         User user = YschoolLiteDataPoolFactory.getUser();
 
-        user.setEmail("tom@gmail.com");
-        user.setUserName("Tom");
-        user.setPassword("XXX");
+        user.setEmail(username + "@gmail.com");
+        user.setUserName(username);
+        user.setPassword(password);
         user.setUserRole((byte) 1);
 
         userDao.save(user);
         dataLayerYschoolLite.flushSession();
+        logger.debug("Successfuly created a setup {}, {}", username, password);
     }
 }

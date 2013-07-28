@@ -1,45 +1,37 @@
 package org.yarlithub.yschool.web.setup;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
-import org.springframework.transaction.annotation.Transactional;
-import org.yarlithub.yschool.factories.yschoolLite.HibernateYschoolLiteDaoFactory;
-import org.yarlithub.yschool.factories.yschoolLite.YschoolLiteDataPoolFactory;
-import org.yarlithub.yschool.model.dao.yschoolLite.UserDao;
-import org.yarlithub.yschool.model.obj.yschoolLite.User;
-import org.yarlithub.yschool.services.data.DataLayerYschoolLite;
-import org.yarlithub.yschool.services.data.DataLayerYschoolLiteImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.yarlithub.yschool.service.SetupService;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
-
-/**
- * Created with IntelliJ IDEA.
- * User: jaykrish
- * Date: 4/25/13
- * Time: 2:55 PM
- * To change this template use File | Settings | File Templates.
- */
-
 @ManagedBean
-@SessionScoped
+@Scope(value="request")
+@Controller
 public class SetupBean implements Serializable {
 
     private static final Logger logger = Logger.getLogger(SetupBean.class);
+
+    @Autowired
+    private SetupService setupService;
+
     //string to test initial development of setup.xhtml file
     public String teststr;
     public String userName;
     public String userRole;
     public String userPass1;
+
     public String userPass2;
+
 
     public SetupBean() {
         logger.info("initiating a new setup bean");
-
     }
 
     public String getUserName() {
@@ -82,26 +74,11 @@ public class SetupBean implements Serializable {
         this.teststr = teststr;
     }
 
-    @Transactional
     public void enterSetup() {
         logger.info("Entering into first time ySchool setup");
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "setting up now.", null));
-        DataLayerYschoolLite dataLayerYschoolLite = DataLayerYschoolLiteImpl.getInstance();
-        Session  session = dataLayerYschoolLite.getCurrentSession();
-        UserDao userDao = HibernateYschoolLiteDaoFactory.getUserDao();
-
-        User user = YschoolLiteDataPoolFactory.getUser();
-
-        user.setEmail("tom@gmail.com");
-        user.setUserName("Tom");
-        user.setPassword("XXX");
-        user.setUserRole((byte) 1);
-
-        userDao.saveOrUpdate(user);
-        dataLayerYschoolLite.flushSession();
-        dataLayerYschoolLite.evict(user);
-
+        setupService.createSetup(userName, userPass1, userRole);
     }
 
 }
